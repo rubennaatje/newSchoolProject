@@ -26,18 +26,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, 'bowercomponents')));
-app.use(session({
+/*app.use(session({
   secret  : 'MinionLovers'
   , key     : 'test'
   , proxy   : 'true'
   , store   : new MemcachedStore({
-    //hosts: ['127.0.0.1:11211'],
-    hosts: [process.env.PROXIMO_URL],
+    hosts: ['127.0.0.1:11211'],
     secret: '123, easy as ABC. ABC, easy as 123' // Optionally use transparent encryption for memcached session data
   })
   ,resave: true
   ,saveUninitialized: true
-}));
+}));*/
+app.use(session({secret: '1234567890QWERTY',resave: true,saveUninitialized: true}));
 /*
  cd c:/users/ruben/workspace/memcached
 
