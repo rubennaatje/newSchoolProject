@@ -14,7 +14,7 @@ var users = require('./routes/users');
 
 var app = express();
 
-// view engine setup
+// view engine setup PROXIMO_URL
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -31,7 +31,8 @@ app.use(session({
   , key     : 'test'
   , proxy   : 'true'
   , store   : new MemcachedStore({
-  //    hosts: ['127.0.0.1:11211'],
+    //hosts: ['127.0.0.1:11211'],
+    hosts: [process.env.PROXIMO_URL],
     secret: '123, easy as ABC. ABC, easy as 123' // Optionally use transparent encryption for memcached session data
   })
   ,resave: true
