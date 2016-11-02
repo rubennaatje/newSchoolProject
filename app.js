@@ -31,7 +31,7 @@ app.use(session({
   , key     : 'test'
   , proxy   : 'true'
   , store   : new MemcachedStore({
-    hosts: ['127.0.0.1:11211'],
+  //    hosts: ['127.0.0.1:11211'],
     secret: '123, easy as ABC. ABC, easy as 123' // Optionally use transparent encryption for memcached session data
   })
   ,resave: true
