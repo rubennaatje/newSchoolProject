@@ -1,0 +1,49 @@
+//
+   Created by ruben on 28/10/2016.
+
+extends layout
+
+block content
+    h1 Programma
+    hr
+    h2 vrijdag
+    each item in rows
+        if( item.dag == 0)
+            div.sprekerBox
+                -var tijd = item.tijdZaalNummer.substring(0,1) + ':00';
+                -var zaal = item.tijdZaalNummer.charAt(2);
+                h3
+                    a(href='/slot/' + item.id) #{item.naam}
+                p= item.onderwerp
+                p= item.omschijving
+                p #{tijd} in zaal #{zaal}
+            br
+    h2 zaterdag
+    each item in rows
+        if( item.dag == 1)
+            div.sprekerBox
+                -var tijd = item.tijdZaalNummer.substring(0,1) + ':00';
+                -var zaal = item.tijdZaalNummer.charAt(2);
+                h3
+                    a(href='/slot/'+item.id) #{item.naam}
+                p= item.onderwerp
+                p= item.omschijving
+                p #{tijd} in zaal #{zaal}
+            br
+
+
+    h2 zondag
+    each item in rows
+        if( item.dag == 2)
+            div.sprekerBox
+                -var tijd = item.tijdZaalNummer.substring(0,1) + ':00';
+                -var zaal = item.tijdZaalNummer.charAt(2);
+                h3
+                    a(href='/slot/' + item.id) #{item.naam}
+                p= item.onderwerp
+                p= item.omschijving
+                p #{tijd} in zaal #{zaal}
+            br
+
+
+

@@ -1,0 +1,99 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Title
+    link(rel='stylesheet', href='stylesheets/easydropdown.css')
+    link(rel='stylesheet', href='bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="/javascripts/jquery.min.js")
+  body
+    #header
+      #topbar
+        #containertopbar
+          span#foundedby
+            | proudly founded by
+            span#namefounded  Ruben Soerdien
+          a#contact  Contact ESOF
+          if (typeof(session) !== 'undefined')
+            if (typeof(session.email) !== 'undefined')
+              a#loginbutton(href="/logout")  uitloggen
+              a#loginbutton(href="/organisator/")   organisator
+            else
+              a#loginbutton(href="/login") Inloggen
+          else
+            a#loginbutton(href="/login") Inloggen
+
+          a#search  Zoeken
+          a#twitter  twitter
+          span#fb  fb
+          span#linkedin  linkedin
+      #imagebarbig
+        #containertopbar
+          img#leftimageheader(src='/images/logo-esof.png')
+          img#rightimageheader(src='/images/logo+date.png')
+
+      #background-graytest
+        #menubig
+          #menuitem
+            a(id='menu item',href="/")  HOME&nbsp;
+          #menuitem
+            a(id='menu item',href="/about")  ABOUT&nbsp;
+          #menuitem
+            a(id='menu item',href="/programma")  PROGRAMME&nbsp;
+          #menuitem
+            a(id='menu item',href="/spreker/agenda")  SPREKERS&nbsp;
+          #menuitem
+            a(id='menu item',href="/tickets")  KAARTVERKOOP&nbsp;
+          #menuitem
+            a(id='menu item')  CONTACT&nbsp;
+    #container1
+      block content
+    footer.section.section-primary
+      .container
+        .row
+          .col-sm-6
+            h1 ESOF 2016
+            p
+              | De conferentie over programmeren,
+              br
+              | vanaf 30 oktober tot 2 oktober..
+              br
+              | Koop nu tickets of meld je aan als spreker.
+          .col-sm-6
+            p.text-info.text-right
+              br
+              br
+            .row
+              .col-md-12.hidden-lg.hidden-md.hidden-sm.text-left
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-instagram.text-inverse
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-twitter.text-inverse
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-facebook.text-inverse
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-github.text-inverse
+            .row
+              .col-md-12.hidden-xs.text-right
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-instagram.text-inverse
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-twitter.text-inverse
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-facebook.text-inverse
+                a(href='#')
+                  i.fa.fa-3x.fa-fw.fa-github.text-inverse
+
+  script(src="/javascripts/jquery.easydropdown.min.js")
+  script(src="/javascripts/minion.js")
+
+
+
+    script(type='text/javascript', src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(type='text/javascript', src='http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js')
+    link(href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css', rel='stylesheet', type='text/css')
+
+

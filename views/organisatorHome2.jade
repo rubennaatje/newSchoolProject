@@ -1,0 +1,19 @@
+//
+   Created by ruben on 12/10/2016.
+extends layout
+
+block content
+   a(href='organisator/aanvragen') bekijk nieuwe aanvragen
+   br
+   a(href='organisator/bekijksprekers') bekijk sprekers
+   form( method="POST",id="memes",action='/organisator/reservatie')
+       p om de gebruikers te laten voor reserveren en een mail te sturen, vul hier onder je bericht in en zet de reservatie in zijn werking.
+       p vul hier je onderwerp in
+       input(type="text", name="onderwerp", placeholder='onderwerp')
+       p vul hier je bericht in.
+       textarea(name='bericht',placeholder=)
+       br
+       br
+       button#btnBuyDirect.button.callToAction Bevestig!
+
+

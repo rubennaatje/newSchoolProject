@@ -1,0 +1,22 @@
+//
+   Created by ruben on 04-Oct-16.
+extends layout
+
+block content
+
+    if(message != null)
+        h1.password #{ message}
+    h1 Login
+    form( method="POST",id="memes")
+        p email
+        input#nameInput(type="email",name="email",placeholder="email", required)
+        p wachtwoord
+        input#nameInput(type="password",name="wachtwoord",placeholder="wachtwoord", required)
+        br
+        br
+        button#btnBuyDirect.button.callToAction Bevestig!
+
+
+//
+   Created by ruben on 12/10/2016.
+

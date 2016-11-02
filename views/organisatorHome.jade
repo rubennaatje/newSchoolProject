@@ -1,0 +1,36 @@
+//
+   Created by ruben on 12/10/2016.
+extends layout
+
+block content
+    h1 zaterdag
+    .section
+        .container
+            .row
+                -for(var i = 0;i<aanvragen.length; i++)
+                    .col-md-3
+                        h2 #{aanvragen[i].naam}
+                        p
+                            | #{aanvragen[i].onderwerp}
+                            br
+                            | #{aanvragen[i].omschrijving}
+                            br
+                            | #{aanvragen[i].datumAanvraag}
+                            br
+                            br
+                            -var string1 = '';
+                            -var string2 = '';
+                            -var string3 = '';
+                            -string1 += aanvragen[i].tijdSlot1;
+                            -string2 += aanvragen[i].tijdSlot2;
+                            -string3 += aanvragen[i].tijdSlot3;
+                            a(href='/organisatie/update/'+aanvragen[i].tijdSlot1+'/'+aanvragen[i].Spreker) #{string1.charAt(0) + string1.charAt(1) + ":00 zaal " + string1.charAt(2)} |
+                            a(href='/organisatie/update/'+aanvragen[i].tijdSlot2+'/'+aanvragen[i].Spreker) #{string2.charAt(0) + string2.charAt(1) + ":00 zaal " + string2.charAt(2)} |
+                            a(href='/organisatie/update/'+aanvragen[i].tijdSlot3+'/'+aanvragen[i].Spreker) #{string3.charAt(0) + string3.charAt(1) + ":00 zaal " + string3.charAt(2)}
+                            br
+                            a(href='/organisatie/update/'+aanvragen[i].Spreker) Afwijzen
+
+
+    -var test = function(tijdslot)
+        res = tijdslot.charAt(1) + tijdslot.charAt(2) + ":00 zaal " + tijdslot.charAt(3);
+

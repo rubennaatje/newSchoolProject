@@ -1,0 +1,42 @@
+//
+   Created by ruben on 04-Oct-16.
+extends layout
+
+block content
+    h1 Vul de benodigde info in om een #{ticketSoort} ticket te kopen
+    form( method="POST",id="memes", action='/tickets/bevestig')
+        b Naam
+        br
+        input#nameInput(type="text",name="naam",placeholder="naam", required)
+        br
+        b Email
+        br
+        input#emailInput(type="email",name="email",placeholder="email",required)
+        br
+        b Aantal Tickets
+        br
+        input#aantalTicketsInput(type="number",name="aantalTickets",value=0,max=5,min=1)
+
+        -if (ticketNummer !== "2" )
+            br
+            br
+            span Dinner
+            input(type="checkbox", id="checkboxDinner",name="dinner")
+            br
+        br
+        span Lunch
+        input(type="checkbox",id="checkboxLunch", name="lunch")
+        br
+        br
+        input#ticketSoortInput(type="hidden", name="ticket", value=ticketNummer)
+
+        p.pricexD
+            span
+             b totaal prijs:
+             span  €
+            span#moneyy 0
+            span
+
+        button#btnBuyDirect.button.callToAction Bevestig!
+
+

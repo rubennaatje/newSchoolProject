@@ -1,0 +1,95 @@
+//
+   Created by ruben on 27/10/2016.
+
+//
+   Created by ruben on 04-Oct-16.
+extends layout
+
+block content
+    h1 Vul de benodigde info in om een #{ticketSoort} ticket te kopen
+    form( method="POST",id="memes", action='/tickets/bevestig')
+        b Naam
+        br
+        input#nameInput(type="text",name="naam",placeholder="naam", required)
+        br
+        b Email
+        br
+        input#emailInput(type="email",name="email",placeholder="email",required)
+        br
+        // b Aantal Tickets
+        table#ticketKeus
+            tr
+                th soort Ticket
+                th Vrijdag
+                th Zaterdag
+                th Zondag
+                th Passe partout
+            tr
+                th
+                    p tickets
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+            tr
+                th
+                    p lunch
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+            tr
+                th
+                    p dinner
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+            tr
+                th
+                    p lunch vegetarisch
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+            tr
+                th
+                    p dinner vegetarisch
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+                td
+                    input(type='number')
+        p.pricexD
+            span
+                b totaal prijs:
+                span  €
+            span#moneyy 0
+            span
+        style.
+            td {
+                background-color: #ffffff;
+                color: black;
+                }
+        button#btnBuyDirect.button.callToAction Bevestig!
+
+

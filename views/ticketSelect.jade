@@ -1,0 +1,22 @@
+//
+   Created by ruben on 03-Oct-16.
+extends layout
+
+block content
+    h1 kaartenverkoop
+    form( method="POST")
+        select#ticketselect(class="dropdown")
+            option(value=1) parse pertout
+            option(value=2) vrijdag
+            option(value=3) zaterdag
+            option(value=4) zondag
+            option(value=5) vrijdag en zaterdag
+        input#ticketSoort(type="hidden", name="ticket", value=2)
+        p.pricexD
+            span €
+            span#moneyy 45
+            span  per ticket
+
+        button#btnBuyDirect2.button.callToAction Betaal!
+    script.
+        console.log(#{tickets});

@@ -1,0 +1,25 @@
+//
+   Created by ruben on 28/10/2016.
+
+extends layout
+
+block content
+    h1 #{spreker.naam}
+    h2 #{spreker.onderwerp}
+    hr
+    p  #{spreker.omschrijving}
+    hr
+    p  #{spreker.dag}
+     |  #{spreker.tijd}
+     |  zaal #{spreker.zaal}
+     |   #{spreker.reserveerbaar}
+    hr
+    if(spreker.reserveerbaar)
+        form( method="POST",id="memes",action='')
+            p Vul hier uw ticket id in om je aan te melden voor dit slot, er zijn nog maar #{spreker.plaatsen} vrij
+            input(type="number", name="id", placeholder='ticketid bijv. 9999999')
+            input(type="hidden", name="dag", value=spreker.dag2)
+            input(type="hidden", name="tijdzaal", value=spreker.tijdzaal)
+            br
+            br
+            button#btnBuyDirect.button.callToAction Bevestig!
