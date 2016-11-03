@@ -118,7 +118,7 @@ organisatorController.bekijkSprekers = function (req, res) {
         }
         else {
             console.log(callback);
-            res.render('sprekerlijst', {rows: callback, session: req.session});
+            res.render('sprekerLijst', {rows: callback, session: req.session});
             //  res.send(callback);
         }
     });
@@ -129,7 +129,7 @@ organisatorController.updatenAanvraag = function (req, res) {
         tijdZaalNummer: req.params.id
 
     };
-    var stringg = post.tijdZaalNummer.charAt(1) + ":00 zaal " + post.tijdZaalNummer.charAt(2)
+    var stringg = post.tijdZaalNummer.charAt(1) + ":00 zaal " + post.tijdZaalNummer.charAt(2);
 
     organisator.updateAanvraag(post, function (error, callback) {
         if (error) {

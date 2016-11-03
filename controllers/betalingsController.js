@@ -61,27 +61,27 @@ betalingsController.derde = function (req, res) {
                     }
                     console.log(ticketids + 'ticketids');
                     setTimeout(function(){
-                    fs.readFile('./out.pdf', function(err, data) {
-                        if(err){
-                            console.log(err);
-                        }
-                            console.log(data);
-                        sendgrid.send({
-                            to: req.body.email,
-                            from: 'info@projectRubenSoerdien.nl',
-                            subject: 'Uw tickets voor de conferentie!!',
-                            text: 'Beste ' + req.body.naam + ticketids+'\n ' + 'hier zijn uw tickets in de bijlage.',
-                            files     : [{filename: 'Report.pdf', content: new Buffer(data.toString('base64'), 'base64'), contentType: 'application/pdf'}]
-
-                        }, function (err, json) {
-                            if (err) {
-                                console.log(path.resolve(process.cwd(), 'out.pdf' ));
-                                return console.error(err);
+                        fs.readFile('./out.pdf', function(err, data) {
+                            if(err){
+                                console.log(err);
                             }
-                            console.log(callback.insertId);
-                        });
-                        //res.send(callback);
-                        res.render('betaald');
+                            console.log(data);
+                            sendgrid.send({
+                                to: req.body.email,
+                                from: 'info@projectRubenSoerdien.nl',
+                                subject: 'Uw tickets voor de conferentie!!',
+                                text: 'Beste ' + req.body.naam + ticketids+'\n ' + 'hier zijn uw tickets in de bijlage.',
+                                files     : [{filename: 'Report.pdf', content: new Buffer(data.toString('base64'), 'base64'), contentType: 'application/pdf'}]
+
+                            }, function (err, json) {
+                                if (err) {
+                                    console.log(path.resolve(process.cwd(), 'out.pdf' ));
+                                    return console.error(err);
+                                }
+                                console.log(callback.insertId);
+                            });
+                            //res.send(callback);
+                            res.render('betaald');
 
                         });
                     },3000);
@@ -115,4 +115,4 @@ betalingsController.xd = function (req, res) {
         }
     });
 };
-    module.exports = betalingsController;
+module.exports = betalingsController;

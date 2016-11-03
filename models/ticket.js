@@ -222,7 +222,7 @@ ticket.getAvailableTickets = function (callback) {
                     rows2.push(rows[0].a);
                 }
                // console.log(rows2);
-                if(rows2.length == 3){
+                if(rows2.length === 3){
                     return callback(null, rows2);
                 }
             });

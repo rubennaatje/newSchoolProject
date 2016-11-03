@@ -16,7 +16,7 @@ var connection = function (callback) {
     pool.getConnection(function (err, conn) {
         if (err) {
             callback(err, null);
-            return;
+            
         } else {
             return callback(null, conn);
         }
