@@ -23,3 +23,16 @@ block content
             br
             br
             button#btnBuyDirect.button.callToAction Bevestig!
+    hr
+    form( method="POST",id="memes",action='/sprekercontact')
+        h3  Neem hier contact op met deze spreker.
+        p vul hier je onderwerp in
+        input(type="text", name="onderwerp", placeholder='onderwerp')
+        p vul hier je email adres in
+        input(type="email", name="email", placeholder='email')
+        p vul hier je bericht in.
+        textarea(name='bericht',placeholder=)
+        input(type="hidden", name="toEmail", value=spreker.email)
+        br
+        br
+        button#btnBuyDirect.button.callToAction Bevestig!

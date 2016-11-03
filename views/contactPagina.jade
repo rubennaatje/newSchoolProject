@@ -1,0 +1,16 @@
+//
+   Created by ruben on 03/11/2016.
+extends layout
+
+block content
+    form( method="POST",id="memes",action='/contact')
+        p Neem hier contact op met de organisatie van esof
+        p vul hier je onderwerp in
+        input(type="text", name="onderwerp", placeholder='onderwerp')
+        p vul hier je email adres in
+        input(type="email", name="email", placeholder='email')
+        p vul hier je bericht in.
+        textarea(name='bericht',placeholder=)
+        br
+        br
+        button#btnBuyDirect.button.callToAction Bevestig!

@@ -8,16 +8,45 @@ var sendgrid = require('sendgrid')("rubennaatje", process.env.wachtwoordSendGrid
 
 var spreker = require('../models/tijdSlot');
 
-var sprekerController = function () {
+var sprekerController = function ()  {};
+sprekerController.sprekerContact = function (req, res) {
+    var post = {
+        onderwerp: req.body.onderwerp,
+        bericht: req.body.bericht
+    };
+    sendgrid.send({
+        to: req.body.toEmail,
+        from: 'organisatie@projectRubenSoerdien.nl',
+        subject: post.onderwerp,
+        html : post.bericht + '<br><br> beantwoord deze email naar: '+ req.body.email
+
+    }, function (err, json) {
+        if (err) {
+            return console.error(err);
+        }
+        sendgrid.send({
+            to: req.body.email,
+            from: 'organisatie@projectRubenSoerdien.nl',
+            subject: post.onderwerp,
+            html: 'geachte heer/mevrouw, <br> uw bericht is ontvangen, u zult zo snel mogelijk antwoord krijgen van de spreker. '
+
+        }, function (err, json) {
+            if (err) {
+                return console.error(err);
+            }
+        });
+    });
+
+    res.render('error2', {message:'gelukt!',session:req.session});
 };
 
 sprekerController.agenda = function (req, res) {
-    spreker.getSlots(1,function (error, callback) {
+    spreker.getSlots(req.params.dag,function (error, callback) {
         if (error) {
             throw error;
         }
         else {
-            res.render('sprekerAgenda', {rows: callback,session:req.session});
+            res.render('sprekerAgenda', {dag:req.params.dag,rows: callback,session:req.session});
         }
     });
 };
@@ -37,9 +66,10 @@ sprekerController.vraagAanSlot = function (req, res) {
         email: req.body.email,
         omschrijving: req.body.omschrijving,
         onderwerp: req.body.onderwerp,
-        slot1: req.body.slot1,
-        slot2: req.body.slot2,
-        slot3: req.body.slot3
+        slot1: req.body.slot1 + '' + req.body.dag,
+        slot2: req.body.slot2 + '' + req.body.dag,
+        slot3: req.body.slot3 + '' + req.body.dag,
+        dag: req.body.dag
     };
     spreker.vraagAan(post, function (err, callback) {
         if (err) {
@@ -58,7 +88,7 @@ sprekerController.vraagAanSlot = function (req, res) {
                 }
                 console.log(callback.insertId);
             });
-            res.render('sprekerAgenda',{session:req.session});
+            res.render('error2',{message:'gelukt, u zult nu een mail ontvangen en een wanneer deze is geaccepteerd',session:req.session});
         }
     });
 
@@ -91,6 +121,9 @@ sprekerController.reserveerSpreker = function (req, res) {
     });
 };
 sprekerController.showSpreker = function (req, res) {
+
+};
+sprekerController.showSpreker = function (req, res) {
     var spreker1 = {
         "naam": "ruben",
         "onderwerp": "html4",
@@ -120,7 +153,8 @@ sprekerController.showSpreker = function (req, res) {
                 dag2: result.spreker[0].dag,
                 plaatsen: (75 - result.aantal),
                 tijdzaal: tijdzaal,
-                reserveerbaar: result.spreker[0].reserveerbaar
+                reserveerbaar: result.spreker[0].reserveerbaar,
+                email: result.spreker[0].email
             };
             if (result.spreker.length != 1) {
                 res.render('error2', {message: "geen presentatie gevonden met dat id",session:req.session});

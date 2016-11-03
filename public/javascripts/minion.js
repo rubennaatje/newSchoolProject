@@ -31,12 +31,18 @@ $(document).ready(function () {
         if($('#checkboxDinner').is( ":checked" )) {
             sum = sum + 3 * test3
         }
+        if($('#checkboxDinnerveg').is( ":checked" )) {
+            sum = sum + 2 * test3
+        }
         if($('#checkboxLunch').is( ":checked" )) {
-            sum = sum + 6 * test3
+            sum = sum + 3 * test3
+        }
+        if($('#checkboxLunchveg').is( ":checked" )) {
+            sum = sum + 2 * test3
         }
         $('#moneyy').html(sum);
     });
-    console.log(JSON.stringify(rijen));
+    //console.log(JSON.stringify(rijen));
 
     for (var i = 0; i < rijen.length; i++){
         var status = rijen[i].status;

@@ -42,6 +42,23 @@ Organisator.bekijkAanvragen = function (callback) {
         })
     });
 };
+Organisator.lijstSpreker = function (callback) {
+    mysql.connection(function (err, conn) {
+        if (err) {
+            return callback(err);
+        }
+
+
+        conn.query('SELECT * FROM spreker, tijdslot WHERE tijdslot.status =3 AND spreker = email ORDER BY SUBSTR( LTRIM( naam ) , LOCATE(  " ", LTRIM( naam ) ) ) ', function (err, rows) {
+            if (err) return callback(err, null);
+
+            else {
+                console.log(rows[0].tijdZaalNummer);
+                return callback(null, rows);
+            }
+        })
+    });
+};
 
 Organisator.updateAanvraag = function (post, callback) {
 
@@ -86,7 +103,7 @@ Organisator.updateAanvraag = function (post, callback) {
                                     console.log('Transaction Complete.');
 
                                     conn.release();
-                                    return callback(null, result);
+                                    return callback(null, post.email);
                                 });
                             });
                     }

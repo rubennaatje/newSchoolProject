@@ -10,9 +10,9 @@ var tijdSlot = function () {
 
 tijdSlot.vraagAan = function (post, callback) {
 
-    var queryMemes = "INSERT INTO `tijdslot` (`id`, `tijdZaalNummer`, `dag`, `spreker`, `status`) VALUES (NULL, '" + post.slot1 + "', '1', '" + post.email + "', 2),\n(null, '" + post.slot2 + "', '1', " +
+    var queryMemes = "INSERT INTO `tijdslot` (`id`, `tijdZaalNummer`, `dag`, `spreker`, `status`) VALUES (NULL, '" + post.slot1 + "', '" + post.dag + "', '" + post.email + "', 2),\n(null, '" + post.slot2 + "', '" + post.dag + "', " +
         "'" + post.email + "', 2)," +
-        "(NULL, '" + post.slot3 + "', '1', '" + post.email + "', 2);";
+        "(NULL, '" + post.slot3 + "', '" + post.dag + "', '" + post.email + "', 2);";
     mysql.connection(function (err, conn) {
         if (err) {
             return callback(err);
@@ -112,6 +112,36 @@ tijdSlot.programma = function (dag,callback) {
             }
         })
     });
+};
+tijdSlot.stuurContact = function(req,res){
+    var post = {
+        to: req.body.to,
+        onderwerp: req.body.onderwerp,
+        bericht: req.body.bericht
+    };
+    sendgrid.send({
+        to: 'ruben.soerdien@hotmail.com',
+        from: req.body.email,
+        subject: post.onderwerp,
+        text: post.bericht
+
+    }, function (err, json) {
+        if (err) {
+            return console.error(err);
+        }
+    });
+    sendgrid.send({
+        to: req.body.email,
+        from: 'organisatie@projectRubenSoerdien.nl',
+        subject: post.onderwerp,
+        html: 'geachte heer/mevrouw, <br> uw bericht is ontvangen, u zult zo snel mogelijk antwoord krijgen. '
+
+    }, function (err, json) {
+        if (err) {
+            return console.error(err);
+        }
+    });
+    res.render('error2', {message:'gelukt!',session:req.session});
 };
 tijdSlot.getSlot = function (id, callback) {
     var query = " ";

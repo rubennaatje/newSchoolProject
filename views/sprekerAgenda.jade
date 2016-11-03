@@ -3,8 +3,26 @@
 extends layout
 
 block content
-    h1 Zaterdag
+    if(dag == 1)
+        h1 zaterdag
+        div.linksleftright
+            div.linkright
+                a(href="/spreker/agenda/0") vrijdag
+            div.linkleft
+                a(href="/spreker/agenda/2") zondag
+    if(dag == 0)
+        h1 vrijdag
+        div.linksleftright
+            div.linkleft
+                a(href="/spreker/agenda/1") zaterdag
+    if(dag == 2)
+        h1 zondag
+        div.linksleftright
+            div.linkright
+                a(href="/spreker/agenda/1") zaterdag
     br
+    br
+
     table#sprekersAgendaTabel
         tr
             th Tijd
@@ -14,82 +32,82 @@ block content
             th Zaal 4
         tr#tr10
             td.timed 10:00-11:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr11
             td.timed 11:00-12:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr12
             td.timed 12:00-13:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr13
             td.timed 13:00-14:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr14
             td.timed 14:00-15:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr15
             td.timed 15:00-16:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr16
             td.timed 16:00-17:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr17
             td.timed 17:00-18:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr18
             td.timed 18:00-19:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr19
             td.timed 19:00-20:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr20
             td.timed 20:00-21:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr21
             td.timed 21:00-22:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
         tr#tr22
             td.timed 22:00-23:00
-            td.td1 open <input type='checkbox'> </input>
-            td.td2 open <input type='checkbox'> </input>
-            td.td3 open <input type='checkbox'> </input>
-            td.td4 open <input type='checkbox'> </input>
+            td.td1 open
+            td.td2 open
+            td.td3 open
+            td.td4 open
     h1 Meld je aan als spreker
     form( method="POST",id="memes", action='/spreker/slotaanvraag')
         p Naam
@@ -100,8 +118,6 @@ block content
         input#omschrijvingInput(type="text",name="omschrijving",placeholder="omschrijving")
         p onderwerp
         input#onderwerpInput(type="text",name="onderwerp",placeholder="onderwerp")
-        p kosten vergoeding bedrag
-        input(type="number",name="bedrag",min=0,max=5000, placeholder="€ 0.00" step="any")
         p kies 3 slotid's
             br
             span.smallerp uur+zaal dus bijvoorbeeld 21:00 zaal 1 is 211
@@ -113,8 +129,10 @@ block content
         input#slot1(type="number",name="slot1",min=100,max=224, placeholder="101")
         input#slot2(type="number",name="slot2",min=100,max=224, placeholder="102")
         input#slot3(type="number",name="slot3",min=100,max=224, placeholder="103")
+        input#dag(type="hidden",name="dag",value=dag)
         br
         br
         button#btnBuyDirect.button.callToAction Bevestig!
     script.
         var rijen = !{JSON.stringify(rows)};
+    script(src='/javascripts/spreker.js')

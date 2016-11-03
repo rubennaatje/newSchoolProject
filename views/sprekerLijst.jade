@@ -1,0 +1,17 @@
+//
+   Created by ruben on 28/10/2016.
+
+extends layout
+
+block content
+    h1 Programma
+    hr
+    h2 vrijdag
+    each item in rows
+        div.sprekerBox
+            h3
+                a(href='/slot/' + item.id) #{item.naam}
+            p= item.onderwerp
+            p= item.omschijving
+        br
+

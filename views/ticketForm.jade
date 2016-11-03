@@ -17,15 +17,21 @@ block content
         br
         input#aantalTicketsInput(type="number",name="aantalTickets",value=0,max=5,min=1)
 
-        -if (ticketNummer !== "2" )
+        if (ticketNummer !== "2" )
             br
             br
             span Dinner
             input(type="checkbox", id="checkboxDinner",name="dinner")
             br
+            span Dinner vegetarisch
+            input(type="checkbox", id="checkboxDinnerveg",name="dinnerveg")
+            br
         br
         span Lunch
         input(type="checkbox",id="checkboxLunch", name="lunch")
+        br
+        span Lunch vegetarisch
+        input(type="checkbox",id="checkboxLunchveg", name="lunchveg")
         br
         br
         input#ticketSoortInput(type="hidden", name="ticket", value=ticketNummer)
