@@ -9,13 +9,14 @@ db.once('open', function() {
     console.log('connected to the mongo database')
 });
 
-var ticketSchema = mongoose.schema({
+var orderSchema = mongoose.schema({
     id      : ObjectId,
     date: { type : Date, default: Date.now },
-    order: { type : mongoose.Schema.ObjectId, ref: 'Order' }
+    tickets: [ {type : mongoose.Schema.ObjectId, ref : 'Ticket'} ],
+    costumer: {type : mongoose.Schema.ObjectId, ref: 'Costumer'}
 });
-ticketSchema.methods.getDate= function () {
+orderSchema.methods.whatWasTheDate= function () {
     return this.date;
 };
 
-module.exports = mongoose.model('Ticket', ticketSchema);
+module.exports = mongoose.model('Order', orderSchema);
