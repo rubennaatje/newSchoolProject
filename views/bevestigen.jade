@@ -1,0 +1,20 @@
+//
+   Created by ruben on 22/05/2017.
+
+extends layout
+
+block content
+    h1 Koop uw ticket
+    table.table
+        thead
+            th product
+            th prijs
+        each product in products
+        tr
+            td !{product.ticketKind.ticketKind}
+            td !{product.ticketKind.price}
+
+
+
+
+

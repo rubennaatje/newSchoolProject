@@ -8,8 +8,8 @@ var qr = require('qr-image');
 /* GET home page. */
 router.get('/',testcontroller.homeController);
 router.get('/test',betalingController.xd);
-router.get('/tickets',betalingController.first);
-router.get('/tickets/get',betalingController.vierde);
+// router.get('/tickets',betalingController.first);
+// router.get('/tickets/get',betalingController.vierde);
 router.post('/tickets',betalingController.tweede);
 router.post('/tickets/bevestig',betalingController.derde);
 router.get('/spreker/agenda/:dag',sprekerController.agenda);

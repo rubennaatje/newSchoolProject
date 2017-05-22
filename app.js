@@ -11,6 +11,7 @@ var MemcachedStore = require('connect-memcached')(session);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var orders = require('./routes/orders');
 
 var app = express();
 
@@ -49,6 +50,7 @@ app.use(session({secret: '1234567890QWERTY',resave: true,saveUninitialized: true
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/order', orders);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

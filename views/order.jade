@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    h1 Koop uw ticket
+    form.form-group(action='', method='post')
+        table.table
+            thead
+                tr
+                    th Product
+                    th Vrijdag
+                    th Zaterdag
+                    th Zondag
+                    th Passe partout
+            tbody
+                each ticketKind in ticketKinds
+
+                 tr
+                    td
+                        !{ticketKind.description}
+                        br
+                        small
+                            br
+                            !{'€'+ticketKind.ticketPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
+                    td
+                        input(type='number', class="form-control", name= ticketKind.ticketKind + '+friday')
+                    td
+                        input(type='number', class="form-control", name= ticketKind.ticketKind + '+saturday')
+                    td
+                        input(type='number', class="form-control", name= ticketKind.ticketKind + '+sunday')
+                    td
+                        input(type='number', class="form-control", name= ticketKind.ticketKind + '+allday')
+        button.btn-success Bestellen!
+
+
+
+
