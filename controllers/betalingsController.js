@@ -1,5 +1,5 @@
 var express = require('express');
-var sendgrid = require('sendgrid')("rubennaatje",  process.env.wachtwoordSendGrid);
+var sendgrid = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 var fs = require('fs');
 /**
