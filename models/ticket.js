@@ -6,4 +6,15 @@ var ticketSchema = mongoose.Schema({
     ticketKind: { type : mongoose.Schema.ObjectId, ref: 'TicketKind' }
 });
 
+ticketSchema.methods.getDay = function () {
+    var days =
+    {
+        'friday':'Vrijdag',
+        'saturday':'Zaterdag',
+        'sunday':'Zondag',
+        'allday':'Alle dagen'
+    }
+
+    return days[this.day];
+};
 module.exports = mongoose.model('Ticket', ticketSchema);

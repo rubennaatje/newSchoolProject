@@ -20,7 +20,9 @@ block content
                         br
                         small
                             br
-                            !{'€'+ticketKind.ticketPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
+                            |per dag: !{'€'+ticketKind.ticketDayPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
+                            br
+                            |passe partout: !{'€'+ticketKind.ticketPPPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
                     td
                         input(type='number', class="form-control", name= ticketKind.ticketKind + '+friday')
                     td

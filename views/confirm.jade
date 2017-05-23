@@ -1,0 +1,54 @@
+//
+   Created by ruben on 22/05/2017.
+
+extends layout
+
+block content
+    -if(errorMessage !== null)
+     .alert.alert-danger
+        strong !{errorMessage}
+
+    br
+    table.table
+        thead
+            tr
+                th Product
+                th dag
+                th prijs
+        tbody
+            each ticket in order.tickets
+                tr
+                    td !{ticket.ticketKind.description}
+                    td !{ticket.day}
+                    td
+                        -if(ticket.day == 'allday')
+                            !{'€'+ ticket.ticketKind.ticketPPPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
+                        -else
+                            !{'€' + ticket.ticketKind.ticketDayPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
+    !{'€' + fullPrice.toFixed(2).replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "€1,")}
+    br
+    !{prettyDate(order.date)}
+    br
+    br
+    form.form-group(action='/order/bevestig', method='post')
+        input(name='firstName', placeholder="Voornaam")
+        br
+        br
+        input(name='lastName', placeholder="Achternaam")
+        br
+        br
+        input(name='email', type='email', placeholder="Email")
+        br
+        br
+        button.btn-success
+            | Bevestig en betaal
+
+    -function prettyDate(dateString){
+         //if it's already a date object and not a string you don't need this line:
+        -var date = new Date(dateString);
+        -var d = date.getDate();
+        -var monthNames = [ "Jan", "Feb", "Mar", "Apr", "Mei", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+        -var m = monthNames[date.getMonth()];
+        -var y = date.getFullYear();
+        -return d+' '+m+' '+y;
+    -}
